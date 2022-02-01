@@ -46,6 +46,11 @@
             }
         }
 
+        public string Code
+        {
+            get => this.code;
+        }
+
         public override string ToString()
         {
             return this.lastname + " " + this.firstname + " " + this.code;

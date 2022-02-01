@@ -15,7 +15,7 @@
         // Constructor
         public BankAccount()
         {
-            _iban = _agency.Code + _id + "U"+ _client.Lastname[0] + _client.Firstname[0] + (_id/3);
+            _iban = _agency.Code + _id + "UFR" + _client.Lastname[0] + _client.Firstname[0] + (_id/3)+_client.Code;
             _libelle = "";
             _solde = 0;
             _client = new Customer();
@@ -23,7 +23,7 @@
         }
         public BankAccount(string libelle, double solde, Customer client, Agency agency)
         {
-            _iban = "";
+            _iban = _agency.Code + _id + "UFR" + _client.Lastname[0] + _client.Firstname[0] + (_id/3)+_client.Code;
             _libelle = libelle;
             _solde = solde;
             _client = client;
