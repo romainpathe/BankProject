@@ -10,23 +10,24 @@
         private double _solde;
         private Customer _client;
         private string _codeAgence;
-        
+        private Agency _agency;
+
         // Constructor
         public BankAccount()
         {
-            _iban = "";
+            _iban = _agency.Code + _id + "U"+ _client.Lastname[0] + _client.Firstname[0] + (_id/3);
             _libelle = "";
             _solde = 0;
             _client = new Customer();
             _id++;
         }
-        
-        public BankAccount(string libelle, double solde, Customer client, string codeAgence)
+        public BankAccount(string libelle, double solde, Customer client, Agency agency)
         {
             _iban = "";
             _libelle = libelle;
             _solde = solde;
             _client = client;
+            _agency = agency;
             _id++;
         }
         
@@ -51,10 +52,10 @@
             get { return _client; }
         }
         
-        public string CodeAgence
+        public Agency Agency
         {
-            get { return _codeAgence; }
-            set { _codeAgence = value; }
+            get { return _agency; }
+            set { _agency = value; }
         }
         
         // Methods
