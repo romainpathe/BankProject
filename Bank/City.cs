@@ -2,26 +2,26 @@
 {
     public class City
     {
-        private string name;
-        private string postalCode;
+        private readonly string _name;
+        private readonly string _postalCode;
 
         public City()
         {
-            this.name = "";
-            this.postalCode = "";
+            this._name = "";
+            this._postalCode = "";
         }
         
         
         public City(string name, string postalCode)
         {
-            this.name = name;
-            this. postalCode = postalCode;
+            this._name = name;
+            this._postalCode = postalCode;
         }
         
         
         public override string ToString()
         {
-            return postalCode+", "+name;
+            return _postalCode+", "+_name;
         }
     }
 }

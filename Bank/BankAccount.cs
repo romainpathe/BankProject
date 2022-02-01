@@ -8,7 +8,7 @@
         private string _iban;
         private string _libelle;
         private double _solde;
-        private Client _client;
+        private Customer _client;
         private string _codeAgence;
         
         // Constructor
@@ -17,11 +17,11 @@
             _iban = "";
             _libelle = "";
             _solde = 0;
-            _client = new Client();
+            _client = new Customer();
             _id++;
         }
         
-        public BankAccount(string libelle, double solde, Client client, string codeAgence)
+        public BankAccount(string libelle, double solde, Customer client, string codeAgence)
         {
             _iban = "";
             _libelle = libelle;
@@ -46,7 +46,7 @@
             get { return _solde; }
         }
         
-        public Client Client
+        public Customer Client
         {
             get { return _client; }
         }
