@@ -1,4 +1,6 @@
-﻿namespace Bank
+﻿using System.Collections.Generic;
+
+namespace Bank
 {
     public class Customer
     {
@@ -6,6 +8,7 @@
         private readonly string _code;
         private readonly string _lastname;
         private readonly string _firstname;
+        private List<BankAccount> _accounts;
 
         public Customer()
         {
@@ -28,6 +31,8 @@
         public string Firstname => _firstname;
 
         public string Code => _code;
+        
+        public List<BankAccount> Accounts => _accounts;
 
         public override string ToString()
         {

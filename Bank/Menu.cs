@@ -104,7 +104,7 @@ namespace Bank
             string nom = "" ,prenom = "",code="";
             float choixMenu = 0;
             string retour;
-            List<Customer> DataBase = null; 
+            List<Customer> DataBase = new List<Customer>(); 
             bool bquit = false;
             Console.WriteLine(" ~~~~~~~~~ Menu Client ~~~~~~~~~~" + "\n" + "\n");
             Console.WriteLine("Veuillez saisir vos identifiants : ");
@@ -129,6 +129,21 @@ namespace Bank
                 {
                     case 1:
                         {
+                            Console.WriteLine("Choissisez le créditeur: ");
+                            for (int i = 0; i < DataBase.Count; i++)
+                            {
+                                Console.WriteLine(i + " : " + DataBase[i].Lastname + " " + DataBase[i].Firstname);
+                            }
+
+                            int value = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Choissisez le compte a créditer :");
+                            for (int i = 0; i < DataBase[value].Accounts.Count; i++)
+                            {
+                                Console.WriteLine(i + " : " + DataBase[value].Accounts[i].Name);
+                            }
+                            int value2 = int.Parse(Console.ReadLine());
+                            
+                            Console.WriteLine("Choissier quel compte débiter");
                             Virement();
                             break;
                         }
@@ -146,7 +161,7 @@ namespace Bank
 
                     case 4:
                         {
-                            ConsulterSolde();
+                            Console.WriteLine();
                             break;
                         }
                     case 5:
