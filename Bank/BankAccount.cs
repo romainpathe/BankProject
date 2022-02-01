@@ -16,7 +16,6 @@
         // Constructor
         public BankAccount()
         {
-            
             _iban = _agency.Code + _id + "UFR" + _client.Lastname[0] + _client.Firstname[0] + (_id/3)+_client.Code;
             _libelle = 1;
             _solde = 0;
@@ -80,39 +79,47 @@
         }
         
         // Methods
-        public void Deposit(double amount)
+        private void Deposit(double amount)
         {
             _solde += amount;
         }
         
-        public bool Withdraw(double amount)
+        private (bool, string) Withdraw(double amount)
         {
             if (_solde - amount >= 0 && _libelle != 3)
             {
                 _solde -= amount;
-                return true;
+                return (true, "");
             }
-            return false;
+            if (_solde - amount < 0)
+            {
+                return (false, "Solde insuffisant");
+            }
+            return (false, "Compte PEL, pas de retrait !");
+            
             
         }
         
-        public void InternalVirement(BankAccount account, double amount)
+        public string InternalVirement(BankAccount account, double amount)
         {
             if (account.Client == this.Client)
             {
-                if (Withdraw(amount))
-                {
-                    account.Deposit(amount);
-                }
+                var (success, msg) = Withdraw(amount);
+
+                if (!success) return msg;
+                account.Deposit(amount);
+                return "";
             }
+            return "Les deux comptes ne sont pas du même client";
         }
         
-        public void ExternalVirement(BankAccount account, double amount)
+        public string ExternalVirement(BankAccount account, double amount)
         {
-            if (Withdraw(amount))
-            {
-                account.Deposit(amount);
-            }
+            var (success, msg) = Withdraw(amount);
+
+            if (!success) return msg;
+            account.Deposit(amount);
+            return "";
         }
         
         
