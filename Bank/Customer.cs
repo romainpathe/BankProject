@@ -2,58 +2,36 @@
 {
     public class Customer
     {
-        private static int num =1;
-        private string lastname;
-        private string firstname;
-        private string code;
+        private static int _id = 0;
+        private readonly string _code;
+        private readonly string _lastname;
+        private readonly string _firstname;
 
         public Customer()
         {
-            this.lastname = "";
-            this.firstname = "";
-            this.code = "";
+            this._lastname = "";
+            this._firstname = "";
+            this._code = "306-"+_id;
+            _id++;
         }
 
-        public Customer(string l,string p)
+        public Customer(string lastname,string firstname)
         {
-            this.lastname = l;
-            this.firstname  = p;  
-            this.code="306 "+num;
-            num++;
+            this._lastname = lastname;
+            this._firstname  = lastname;  
+            this._code="306-"+_id;
+            _id++;
         }
 
-        public string Lastname
-        {
-            get
-            {
-                return this.lastname;
-            }
-            set
-            {
-                this.lastname = value;
-            }
-        }
+        public string Lastname => _lastname;
 
-        public string Firstname
-        {
-            get 
-            { 
-                return this.firstname; 
-            }
-            set 
-            { 
-                this.firstname = value; 
-            }
-        }
+        public string Firstname => _firstname;
 
-        public string Code
-        {
-            get => this.code;
-        }
+        public string Code => _code;
 
         public override string ToString()
         {
-            return this.lastname + " " + this.firstname + " " + this.code;
+            return "Nom et prénom: "+this._lastname + " " + this._firstname + "\nCode unique: " + this._code;
         }
 
     }

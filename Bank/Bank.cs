@@ -5,14 +5,12 @@ namespace Bank
     public class Bank
     {
         private List<Agency> agencyList;
-        private string name;
-        
+        private string _name;
+        private string _code;
+
         //accessors
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        public string Name => _name;
+        public string Code => _code;
         public List<Agency> AgencyList
         {
             get { return agencyList; }

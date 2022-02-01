@@ -2,28 +2,27 @@
 {
     public class Agency
     {
-        private readonly string _code;
-        private readonly int _phoneNumber;
-        private readonly Address _address;
+        private static int _id = 0;
+        private readonly Bank _bank;
         
 
-        public string Code => _code;
+        public string Code { get;}
+        public int PhoneNumber { get; }
+        public Address Address { get; }
 
-        public int PhoneNumber => _phoneNumber;
-        
-        public Address Address => _address;
-
-        public Agency(string code, int phoneNumber, Address address)
+        public Agency(string code, int phoneNumber, Address address, Bank bank)
         {
-            this._code = code;
-            this._phoneNumber = phoneNumber;
-            this._address = address;
+            this.Code = bank.Code+"-"+_id;
+            this.PhoneNumber = phoneNumber;
+            this.Address = address;
+            this._bank = bank;
+            _id++;
         }
 
 
         public override string ToString()
         {
-            return "Agency Code: " + _code + "\nTéléphone: " + _phoneNumber + "\nAddress: " + _address;
+            return "Agency Code: " + Code + "\nTéléphone: " + PhoneNumber + "\nAddress: " + Address;
         }
     }
 }
