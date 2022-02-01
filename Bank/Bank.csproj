@@ -41,6 +41,7 @@
         <Compile Include="Address.cs" />
         <Compile Include="Agency.cs" />
         <Compile Include="Bank.cs" />
+        <Compile Include="BankAccount.cs" />
         <Compile Include="City.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
