@@ -4,19 +4,14 @@ namespace Bank
 {
     public class Bank
     {
-        private List<Agency> agencyList;
-        private string name;
-        
-        //accessors
-        public string Name
+        public string Code { get; }
+        public string Name { get; }
+        public List<Agency> AgencyList { get; }
+
+
+        public override string ToString()
         {
-            get { return name; }
-            set { name = value; }
-        }
-        public List<Agency> AgencyList
-        {
-            get { return agencyList; }
-            set { agencyList = value; }
+            return "Nom: " + Name + "\nCode: " + Code + "\nListe des agences: " + AgencyList;
         }
     }
 }
