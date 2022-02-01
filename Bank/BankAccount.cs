@@ -79,12 +79,12 @@
         }
         
         // Methods
-        private void Deposit(double amount)
+        public void Deposit(double amount)
         {
             _solde += amount;
         }
         
-        private (bool, string) Withdraw(double amount)
+        public (bool, string) Withdraw(double amount)
         {
             if (_solde - amount >= 0 && _libelle != 3)
             {
@@ -93,11 +93,9 @@
             }
             if (_solde - amount < 0)
             {
-                return (false, "Solde insuffisant");
+                return (false, "Solde insuffisant.");
             }
             return (false, "Compte PEL, pas de retrait !");
-            
-            
         }
         
         public string InternalVirement(BankAccount account, double amount)
@@ -110,7 +108,7 @@
                 account.Deposit(amount);
                 return "";
             }
-            return "Les deux comptes ne sont pas du même client";
+            return "Les deux comptes ne sont pas du même client.";
         }
         
         public string ExternalVirement(BankAccount account, double amount)
