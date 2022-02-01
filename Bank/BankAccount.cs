@@ -4,9 +4,10 @@
     {
         //static attributes
         private static int _id = 0;
-        // instance Attributs
+        // instance Attributes
+        private string _name;
         private string _iban;
-        private string _libelle;
+        private int _libelle;
         private double _solde;
         private Customer _client;
         private string _codeAgence;
@@ -15,16 +16,32 @@
         // Constructor
         public BankAccount()
         {
+            
             _iban = _agency.Code + _id + "UFR" + _client.Lastname[0] + _client.Firstname[0] + (_id/3)+_client.Code;
-            _libelle = "";
+            _libelle = 1;
             _solde = 0;
             _client = new Customer();
             _id++;
         }
-        public BankAccount(string libelle, double solde, Customer client, Agency agency)
+        public BankAccount(int libelle, double solde, Customer client, Agency agency)
         {
             _iban = _agency.Code + _id + "UFR" + _client.Lastname[0] + _client.Firstname[0] + (_id/3)+_client.Code;
             _libelle = libelle;
+            if (libelle == 1)
+            {
+                _name = "Compte courant";
+            }
+            else if (libelle == 2)
+            {
+                _name = "Compte épargne";
+            }else if (libelle == 3)
+            {
+                _name = "PEL";
+            }
+            else
+            {
+                _name = "Custom";
+            }
             _solde = solde;
             _client = client;
             _agency = agency;
@@ -32,12 +49,16 @@
         }
         
         // Properties
+        public string Name
+        {
+            get { return _name; }
+        }
         public string Iban
         {
             get { return _iban; }
         }
         
-        public string Libelle
+        public int Libelle
         {
             get { return _libelle; }
         }
@@ -66,13 +87,13 @@
         
         public bool Withdraw(double amount)
         {
-            if (_solde - amount >= 0)
+            if (_solde - amount >= 0 && _libelle != 3)
             {
                 _solde -= amount;
                 return true;
             }
-
             return false;
+            
         }
         
         public void InternalVirement(BankAccount account, double amount)
