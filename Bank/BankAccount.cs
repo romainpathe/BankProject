@@ -124,13 +124,9 @@
         {
             if (account.Client == this.Client)
             {
-                var (success, msg) = Withdraw(amount);
-
-                if (!success) return msg;
-                account.Deposit(amount);
-                return "";
+                return InternalVirement(account, amount);
             }
-            return "Les deux comptes ne sont pas du même client.";
+            return ExternalVirement(account, amount);
         }
         
         
