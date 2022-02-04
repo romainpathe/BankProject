@@ -104,7 +104,8 @@ namespace Bank
             string nom = "" ,prenom = "",code="";
             float choixMenu = 0;
             string retour;
-            List<Customer> DataBase = new List<Customer>(); 
+            List<Customer> DataBase = new List<Customer>();
+            Bank bank = new Bank();
             bool bquit = false;
             Console.WriteLine(" ~~~~~~~~~ Menu Client ~~~~~~~~~~" + "\n" + "\n");
             Console.WriteLine("Veuillez saisir vos identifiants : ");
@@ -134,25 +135,52 @@ namespace Bank
 
                             Console.WriteLine("Combien voulez vous tranférer : ");
                             double value=Convert.ToDouble(Console.ReadLine());
-                            Console.Write(account1.Transfer(account2, value);
-                        
+                            Console.Write(account1.Transfer(account2, value));
                             break;
                         }
                     case 2:
                         {
-                            Retraitoudepot();
+                            BankAccount account = GetBankAccount(DataBase);
+                            Console.WriteLine("Combien voulez vous tranférer : ");
+                            double value = Convert.ToDouble(Console.ReadLine());
+                            if (value < 0)
+                            {
+                                var (b, txt) = account.Withdraw(-value);
+                                if (!b)
+                                {
+                                    Console.WriteLine(txt);
+                                }
+
+                            }
+                            else
+                            {
+                                account.Deposit(value);
+                            }
                             break;
                         }
 
                     case 3:
                         {
-                            ChangerAgence();
+                            
+                           
+
+                            for (int i=0;i<bank.AgencyList.Count;i++)
+                            {
+                                Console.WriteLine(i+" : "+bank.AgencyList[i]);
+                            }
+                            Console.WriteLine("Veuillez choisir la nouvelle agence : ");
+                            int value=Convert.ToInt32(Console.ReadLine());
+
+                            BankAccount account= GetBankAccount(DataBase);
+                            account.Agency = bank.AgencyList[value];
+
                             break;
                         }
 
                     case 4:
                         {
-                            Console.WriteLine();
+                            BankAccount account1 = GetBankAccount(DataBase);
+                            Console.WriteLine("Votre solde est de : " + account1.Solde);
                             break;
                         }
                     case 5:
@@ -221,6 +249,7 @@ namespace Bank
             float choixMenu = 0;
             string retour;
             List<Customer> DataBase = null;
+            
             bool bquit = false;
             Console.WriteLine(" ~~~~~~~~~ Menu Client ~~~~~~~~~~" + "\n" + "\n");
             Console.WriteLine("Veuillez saisir vos identifiants : ");
