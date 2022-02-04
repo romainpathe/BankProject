@@ -1,2 +1,6 @@
 C:\Users\ketch\Documents\GitHub\BankProject\Bank\obj\Debug\Bank.csproj.AssemblyReference.cache
 C:\Users\ketch\Documents\GitHub\BankProject\Bank\obj\Debug\Bank.csproj.CoreCompileInputs.cache
+C:\Users\ketch\Documents\GitHub\BankProject\Bank\bin\Debug\Bank.exe
+C:\Users\ketch\Documents\GitHub\BankProject\Bank\bin\Debug\Bank.pdb
+C:\Users\ketch\Documents\GitHub\BankProject\Bank\obj\Debug\Bank.exe
+C:\Users\ketch\Documents\GitHub\BankProject\Bank\obj\Debug\Bank.pdb

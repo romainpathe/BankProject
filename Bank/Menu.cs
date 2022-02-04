@@ -250,6 +250,9 @@ namespace Bank
             string retour;
             List<Customer> DataBase = null;
             
+            Bank bank = new Bank("Banque 1","B1");
+            
+            
             bool bquit = false;
             Console.WriteLine(" ~~~~~~~~~ Menu Client ~~~~~~~~~~" + "\n" + "\n");
             Console.WriteLine("Veuillez saisir vos identifiants : ");
@@ -272,24 +275,60 @@ namespace Bank
                 {
                     case 1:
                         {
-                            Listeagence();
+                            foreach (Agency element in bank.AgencyList)
+                            {
+                                Console.WriteLine(element);
+                            }
                             break;
                         }
                     case 2:
                         {
-                            listecomptaff();
+                            Console.WriteLine("Saisir le code de l'agence");
+                            string codeagency = Console.ReadLine();
+                            foreach (var customer in DataBase)
+                            {
+                                foreach (var bankAccount in customer.Accounts)
+                                {
+                                    if (bankAccount.Agency.Code == codeagency)
+                                    {
+                                        Console.WriteLine(bankAccount);
+                                    }
+                                }
+                            }
                             break;
                         }
 
                     case 3:
                         {
-                            Infocmp();
+                            Console.WriteLine("Saisir le code de l'agence");
+                            string codeagency = Console.ReadLine();
+                            foreach (var customer in DataBase)
+                            {
+                                foreach (var bankAccount in customer.Accounts)
+                                {
+                                    if (bankAccount.Agency.Code == codeagency)
+                                    {
+                                        Console.WriteLine(bankAccount);
+                                    }
+                                }
+                            }
                             break;
                         }
 
                     case 4:
                         {
-                            InfoClient();
+                            Console.WriteLine("Saisir le code de l'agence");
+                            string codeagency = Console.ReadLine();
+                            foreach (var customer in DataBase)
+                            {
+                                foreach (var bankAccount in customer.Accounts)
+                                {
+                                    if (bankAccount.Agency.Code == codeagency)
+                                    {
+                                        Console.WriteLine(customer);
+                                    }
+                                }
+                            }
                             break;
                         }
                     case 5:
