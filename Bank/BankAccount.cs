@@ -120,6 +120,19 @@
             return "";
         }
         
+        public string Transfer(BankAccount account, double amount)
+        {
+            if (account.Client == this.Client)
+            {
+                var (success, msg) = Withdraw(amount);
+
+                if (!success) return msg;
+                account.Deposit(amount);
+                return "";
+            }
+            return "Les deux comptes ne sont pas du même client.";
+        }
+        
         
         
         
