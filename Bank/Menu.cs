@@ -129,22 +129,13 @@ namespace Bank
                 {
                     case 1:
                         {
-                            Console.WriteLine("Choissisez le créditeur: ");
-                            for (int i = 0; i < DataBase.Count; i++)
-                            {
-                                Console.WriteLine(i + " : " + DataBase[i].Lastname + " " + DataBase[i].Firstname);
-                            }
+                            BankAccount account1=GetBankAccount(DataBase);
+                            BankAccount account2=GetBankAccount(DataBase);
 
-                            int value = int.Parse(Console.ReadLine());
-                            Console.WriteLine("Choissisez le compte a créditer :");
-                            for (int i = 0; i < DataBase[value].Accounts.Count; i++)
-                            {
-                                Console.WriteLine(i + " : " + DataBase[value].Accounts[i].Name);
-                            }
-                            int value2 = int.Parse(Console.ReadLine());
-                            
-                            Console.WriteLine("Choissier quel compte débiter");
-                            Virement();
+                            Console.WriteLine("Combien voulez vous tranférer : ");
+                            double value=Convert.ToDouble(Console.ReadLine());
+                            Console.Write(account1.Transfer(account2, value);
+                        
                             break;
                         }
                     case 2:
@@ -201,6 +192,27 @@ namespace Bank
                 }
             }
             
+        }
+
+        static BankAccount GetBankAccount(List<Customer>DataBase)
+        {
+            Console.WriteLine("Choissisez l'utilisateur : ");
+            for (int i = 0; i < DataBase.Count; i++)
+            {
+                Console.WriteLine(i + " : " + DataBase[i].Lastname + " " + DataBase[i].Firstname);
+            }
+            int value = int.Parse(Console.ReadLine());
+            Customer customer1 = DataBase[value];
+            Console.WriteLine("Choissisez le compte  :");
+            for (int i = 0; i < DataBase[value].Accounts.Count; i++)
+            {
+                Console.WriteLine(i + " : " + DataBase[value].Accounts[i].Name);
+            }
+            int value2 = int.Parse(Console.ReadLine());
+           BankAccount account = customer1.Accounts[value2];
+
+            return account;
+
         }
 
         static void Gestionnaire()
